@@ -405,19 +405,10 @@ namespace WebParserISO
         private void LoadasTree_Click(object sender, EventArgs e)
         {
 
-            XmlDocument dom = new XmlDocument();
-            dom.Load(Application.StartupPath + "\\ISO9999.Xml");
-            WebtoText.Text = dom.DocumentElement.Name+"\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.Name + "\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.FirstChild.Name + "\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.FirstChild.InnerText + "\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.LastChild.Name + "\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.LastChild.FirstChild.Name + "\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.LastChild.FirstChild.FirstChild.InnerText + "\r\n\n";
-            WebtoText.Text = WebtoText.Text + dom.DocumentElement.FirstChild.LastChild.FirstChild.LastChild.Name + "\r\n\n";
+            // WebtoText.Text = Heerkensfile.LoadFiletoBox("ISO9999withICFreferences.txt");
+            WebtoText.Text =  Heerkensfile.GetChapters();
+           
 
-            XmlNode Parent = dom.DocumentElement.FirstChild.LastChild.FirstChild.FirstChild;
-            WebtoText.Text = WebtoText.Text + Parent.Name;
         }
     }
 }
