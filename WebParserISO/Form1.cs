@@ -405,9 +405,12 @@ namespace WebParserISO
         private void LoadasTree_Click(object sender, EventArgs e)
         {
 
-            // WebtoText.Text = Heerkensfile.LoadFiletoBox("ISO9999withICFreferences.txt");
-            WebtoText.Text =  Heerkensfile.GetChapters();
-           
+            // WebtoText.Text = Heerkensfile.LoadFiletoBox("ISO9999withICFreferences.txt");            
+            // ISOTable.DataSource = Heerkensfile.FillMappingTable();
+
+            //WebtoText.Text = Heerkensfile.Kategoriezeile("15.12 Assistive products for house-cleaning").ToArray()[1];
+            //WebtoText.Text = Heerkensfile.CheckLineType("Equipment for assisting a person to breathe").ToString();
+
 
         }
     }
