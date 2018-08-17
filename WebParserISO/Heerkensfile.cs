@@ -38,12 +38,12 @@ namespace WebParserISO
         public static List<string> KapitelTeilung()
         {
             string Kapitel = LoadFiletoBox("ISO9999withICFreferences.txt");
-            List<string> KapitelStrings= new List<string>();
+            List<string> KapitelStrings = new List<string>();
             int start, ende;
-            for(int i=0; i<=9; i++)
+            for (int i = 0; i <= 9; i++)
             {
                 start = Kapitel.IndexOf(Oberkategorien[i]);
-                ende = Kapitel.IndexOf(Oberkategorien[i + 1])-1;
+                ende = Kapitel.IndexOf(Oberkategorien[i + 1]) - 1;
                 KapitelStrings.Add(Kapitel.Substring(start, ende - start));
             }
             start = Kapitel.IndexOf(Oberkategorien[10]);
@@ -53,10 +53,10 @@ namespace WebParserISO
             return KapitelStrings;
         } //
 
-        public static string GetChapters() 
+        public static string GetChapters()
         {
             List<string> Kapitelliste = KapitelTeilung();
-           
+
             string AllChaps = string.Join(" ", Kapitelliste);
 
             return AllChaps;
@@ -98,7 +98,7 @@ namespace WebParserISO
             {
                 DataType = System.Type.GetType("System.String"),
                 ColumnName = "ICF Title",
-                DefaultValue= ""
+                DefaultValue = ""
             };
             MappingTable.Columns.Add(column);
 
@@ -110,46 +110,47 @@ namespace WebParserISO
             DataTable Mapping = TableSetup();
             List<string> Kapitel = KapitelTeilung();
 
-            
+
             DataRow row = Mapping.NewRow();
-            foreach(string Chapter in Kapitel)
+            foreach (string Chapter in Kapitel)
             {
-                string[] LineCollection = Chapter.Split("\r\n".ToCharArray());
-                for (int i=0; i<=LineCollection.Length-2;i++)
+                string[] LineCollection = Get_Cleared_LineCollection(Chapter);
+
+                for (int i = 0; i <= LineCollection.Length - 2; i++)
                 {
-                    switch (CheckLineType(LineCollection[i]))
+                    string[] Entry = IsoMappingEntry(LineCollection, i);
+                    int EntrySize = Entry.Length;
+                    List<string> Titel = Kategoriezeile(Entry[0]);
+                    row[0] = Titel[0];
+                    row[1] = Titel[1];
+                    if(EntrySize>1)
                     {
-                        case 0:
-                            List<string> Titelzeile = Kategoriezeile(LineCollection[i]);
-                            row["ISO Nummer"] = Titelzeile[0];
-                            row["ISO Title"] = Titelzeile[1];
-                            if (Titelzeile[0].Length<=5)
-                            {   if(CheckLineType(LineCollection[i+1])==1)
-                                {
-                                    row[2] = (string)row[2] + LineCollection[i+1];
-                                }
-                                Mapping.Rows.Add(row);
-                                row = Mapping.NewRow();
-                            }
-                            break;
-                        case 1:
-                            row[2] = (string)row[2] + LineCollection[i];
-                            break;
-                        case 2:
-                            string[] ICFZeile = new string[2];
-                            ICFZeile = ICF_Zeile(LineCollection[i]);
-                            row[3] = ICFZeile[1];
-                            row[4] = ICFZeile[0].Replace('?','\'');
-                            Mapping.Rows.Add(row);
-                            if(CheckLineType(LineCollection[i+1])!=2)
+                        for(int k=1;k<=EntrySize-1;k++)
+                        {
+                            if(CheckLineType(Entry[k])==1)
                             {
-                                row = Mapping.NewRow();
+                                row[2] = (string)row[2] + Entry[k];
                             }
-                            break;
-                        default:
-                            break;
+                            if(CheckLineType(Entry[k])==2)
+                            {
+                                string[] Code = ICF_Zeile(Entry[k]);
+                                row[3] = Code[1];
+                                row[4] = Code[0].Replace('?','\'');
+                                if(k!=EntrySize-1)
+                                {
+                                    Mapping.Rows.Add(row);
+                                    row = Mapping.NewRow();
+                                    row[0] = Titel[0];
+                                    row[1] = Titel[1];
+                                }
+                            }
+                        }
+
                     }
-                }    
+                    i = i + EntrySize-1;
+                    Mapping.Rows.Add(row);
+                    row = Mapping.NewRow();
+                }
             }
             return Mapping;
         }
@@ -157,7 +158,7 @@ namespace WebParserISO
         public static int CheckLineType(string Zeile)
         {
             int Zeilentyp;
-            if (Zeile.Length>=12)
+            if (Zeile.Length >= 12)
             {
                 if (Zeile.Contains("ICF-reference:") == true)
                 {
@@ -172,7 +173,7 @@ namespace WebParserISO
                     return Zeilentyp = 1; // Beschreibungszeile
                 }
             }
-             return Zeilentyp = 3; //Leerzeile
+            return Zeilentyp = 3; //Leerzeile
         } //
 
         public static List<string> Kategoriezeile(string Zeile)
@@ -180,14 +181,14 @@ namespace WebParserISO
             List<string> Eintrage = new List<string>();
             string Nummer, Title;
 
-            if (Zeile[5]=='.')
+            if (Zeile[5] == '.')
             {
-                 Nummer = Zeile.Substring(0, 8);
+                Nummer = Zeile.Substring(0, 8);
                 Title = Zeile.Substring(8, Zeile.Length - 8);
             }
             else
             {
-                if(Zeile[2]=='.')
+                if (Zeile[2] == '.')
                 {
                     Nummer = Zeile.Substring(0, 5);
                     Title = Zeile.Substring(5, Zeile.Length - 5);
@@ -196,7 +197,7 @@ namespace WebParserISO
                 {
                     Nummer = Zeile.Substring(0, 2);
                     Title = Zeile.Substring(2, Zeile.Length - 2);
-                    
+
                 }
             }
             Eintrage.Add(Nummer);
@@ -208,7 +209,7 @@ namespace WebParserISO
         {
             string[] Code = new string[2];
             Zeile = Zeile.Remove(0, 15);
-            if(Zeile.Contains('(')==true && Zeile.Contains(')'))
+            if (Zeile.Contains('(') == true && Zeile.Contains(')'))
             {
                 int Trennung = Zeile.IndexOf('(');
                 int Ende = Zeile.IndexOf(')');
@@ -223,6 +224,29 @@ namespace WebParserISO
             }
             return Code;
         } //
-         
+
+        public static string[] Get_Cleared_LineCollection(string Chapter)
+        {
+            string[] LineCollection = Chapter.Split("\r\n".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+            return LineCollection;
+
+        }
+
+        public static string[] IsoMappingEntry(string[] Linecollection, int StartingLine)
+
+        {
+            List<string> MappingEntry = new List<string>
+            {
+                Linecollection[StartingLine]
+            };
+            int i = 1;
+            while (StartingLine+ i <= Linecollection.Length - 2 && CheckLineType(Linecollection[StartingLine + i]) != 0)
+            {
+                MappingEntry.Add(Linecollection[StartingLine + i]);
+                i = i + 1;
+            }
+            
+            return MappingEntry.ToArray();
+        }
     }
 }
