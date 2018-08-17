@@ -122,7 +122,7 @@ namespace WebParserISO
                     int EntrySize = Entry.Length;
                     List<string> Titel = Kategoriezeile(Entry[0]);
                     row[0] = Titel[0];
-                    row[1] = Titel[1];
+                    row[1] = CorrectTitle(Titel[1]);
                     if(EntrySize>1)
                     {
                         for(int k=1;k<=EntrySize-1;k++)
@@ -141,7 +141,7 @@ namespace WebParserISO
                                     Mapping.Rows.Add(row);
                                     row = Mapping.NewRow();
                                     row[0] = Titel[0];
-                                    row[1] = Titel[1];
+                                    row[1] = CorrectTitle(Titel[1]);
                                 }
                             }
                         }
@@ -209,13 +209,24 @@ namespace WebParserISO
         {
             string[] Code = new string[2];
             Zeile = Zeile.Remove(0, 15);
+            Zeile = Zeile.Trim(' ');
+            
             if (Zeile.Contains('(') == true && Zeile.Contains(')'))
             {
                 int Trennung = Zeile.IndexOf('(');
                 int Ende = Zeile.IndexOf(')');
-                Code[0] = Zeile.Substring(0, Trennung - 1);
                 Code[1] = Zeile.Substring(Trennung + 1, Ende - Trennung - 1);
-
+                if (Char.IsNumber(Code[1][Code[1].Length - 1]) == false)
+                {
+                    Code[0] = Zeile.Substring(0, Ende + 1);
+                    Code[1] = Zeile.Substring(Ende + 2, Zeile.Length - 2 - Ende);
+                    Code[1] = Code[1].Trim('(', ')');
+                }
+                else
+                {
+                    Code[1] = Zeile.Substring(Trennung + 1, Ende - Trennung - 1);
+                    Code[0] = Zeile.Substring(0, Trennung - 1);
+                }
             }
             else
             {
@@ -248,5 +259,17 @@ namespace WebParserISO
             
             return MappingEntry.ToArray();
         }
+
+        public static string CorrectTitle(string Title)
+        {
+            Title = Title.Trim(' ');
+            int TitleLength = Title.Length;
+            if(Char.IsNumber(Title[TitleLength-1])==true)
+            {
+                Title = Title.Substring(0, TitleLength - 1);
+            }
+            return Title;
+        }
+        
     }
 }
