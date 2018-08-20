@@ -105,7 +105,7 @@ namespace WebParserISO
             {
                 Beschreibung = Beschreibung.Substring(0, WebTableEntry.IndexOf("siehe", 0 - 1));
             }
-            if (Beschreibung.Substring(0,4)=="href")
+            if (Beschreibung.Length>=5 && Beschreibung.Substring(0,4)=="href")
             {
                 Beschreibung = "";
             }
