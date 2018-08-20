@@ -29,17 +29,13 @@
         private void InitializeComponent()
         {
             this.WebtoText = new System.Windows.Forms.RichTextBox();
-            this.NodeForm = new System.Windows.Forms.TreeView();
             this.ISOTable = new System.Windows.Forms.DataGridView();
             this.URLadress = new System.Windows.Forms.TextBox();
             this.WebToString = new System.Windows.Forms.Button();
             this.LoadasTree = new System.Windows.Forms.Button();
             this.ConvertToTable = new System.Windows.Forms.Button();
             this.Textviewer = new System.Windows.Forms.Button();
-            this.NodeViewer = new System.Windows.Forms.Button();
             this.Tableviewer = new System.Windows.Forms.Button();
-            this.ISOBrowser = new System.Windows.Forms.WebBrowser();
-            this.WebView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ISOTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,14 +46,6 @@
             this.WebtoText.Size = new System.Drawing.Size(1131, 436);
             this.WebtoText.TabIndex = 0;
             this.WebtoText.Text = "";
-            // 
-            // NodeForm
-            // 
-            this.NodeForm.Location = new System.Drawing.Point(26, 67);
-            this.NodeForm.Name = "NodeForm";
-            this.NodeForm.Size = new System.Drawing.Size(1131, 433);
-            this.NodeForm.TabIndex = 1;
-            this.NodeForm.Visible = false;
             // 
             // ISOTable
             // 
@@ -115,19 +103,9 @@
             this.Textviewer.UseVisualStyleBackColor = true;
             this.Textviewer.Click += new System.EventHandler(this.Textviewer_Click);
             // 
-            // NodeViewer
-            // 
-            this.NodeViewer.Location = new System.Drawing.Point(78, 12);
-            this.NodeViewer.Name = "NodeViewer";
-            this.NodeViewer.Size = new System.Drawing.Size(46, 24);
-            this.NodeViewer.TabIndex = 8;
-            this.NodeViewer.Text = "Tree";
-            this.NodeViewer.UseVisualStyleBackColor = true;
-            this.NodeViewer.Click += new System.EventHandler(this.NodeViewer_Click);
-            // 
             // Tableviewer
             // 
-            this.Tableviewer.Location = new System.Drawing.Point(130, 12);
+            this.Tableviewer.Location = new System.Drawing.Point(78, 12);
             this.Tableviewer.Name = "Tableviewer";
             this.Tableviewer.Size = new System.Drawing.Size(46, 24);
             this.Tableviewer.TabIndex = 9;
@@ -135,42 +113,19 @@
             this.Tableviewer.UseVisualStyleBackColor = true;
             this.Tableviewer.Click += new System.EventHandler(this.Tableviewer_Click);
             // 
-            // ISOBrowser
-            // 
-            this.ISOBrowser.Location = new System.Drawing.Point(26, 68);
-            this.ISOBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.ISOBrowser.Name = "ISOBrowser";
-            this.ISOBrowser.Size = new System.Drawing.Size(1131, 431);
-            this.ISOBrowser.TabIndex = 10;
-            this.ISOBrowser.Visible = false;
-            // 
-            // WebView
-            // 
-            this.WebView.Location = new System.Drawing.Point(182, 12);
-            this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(46, 24);
-            this.WebView.TabIndex = 11;
-            this.WebView.Text = "Web";
-            this.WebView.UseVisualStyleBackColor = true;
-            this.WebView.Click += new System.EventHandler(this.WebView_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 569);
-            this.Controls.Add(this.WebView);
-            this.Controls.Add(this.ISOBrowser);
             this.Controls.Add(this.Tableviewer);
-            this.Controls.Add(this.NodeViewer);
             this.Controls.Add(this.Textviewer);
             this.Controls.Add(this.ConvertToTable);
             this.Controls.Add(this.LoadasTree);
             this.Controls.Add(this.WebToString);
             this.Controls.Add(this.URLadress);
-            this.Controls.Add(this.ISOTable);
-            this.Controls.Add(this.NodeForm);
             this.Controls.Add(this.WebtoText);
+            this.Controls.Add(this.ISOTable);
             this.Name = "Form1";
             this.Text = "Parse ISO9999 from WebPage";
             ((System.ComponentModel.ISupportInitialize)(this.ISOTable)).EndInit();
@@ -182,17 +137,13 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox WebtoText;
-        private System.Windows.Forms.TreeView NodeForm;
         private System.Windows.Forms.DataGridView ISOTable;
         private System.Windows.Forms.TextBox URLadress;
         private System.Windows.Forms.Button WebToString;
         private System.Windows.Forms.Button LoadasTree;
         private System.Windows.Forms.Button ConvertToTable;
         private System.Windows.Forms.Button Textviewer;
-        private System.Windows.Forms.Button NodeViewer;
         private System.Windows.Forms.Button Tableviewer;
-        private System.Windows.Forms.WebBrowser ISOBrowser;
-        private System.Windows.Forms.Button WebView;
     }
 }
 

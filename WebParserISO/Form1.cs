@@ -135,13 +135,11 @@ namespace WebParserISO
                         j = j + 1;
                         if (j == 1 && k == 2 && i >= 1)
                         {
-                            //WebtoText.Text = WebtoText.Text + Kind.InnerHtml + " \r\n";
                             Split_String_To_Entry(Kind.InnerHtml);
                         }
                     }
                 }
                 i = i + 1;
-                //WebtoText.Text = WebtoText.Text + "\r\n";
             }
         }
 
@@ -373,56 +371,19 @@ namespace WebParserISO
         private void Textviewer_Click(object sender, EventArgs e)
         {
             WebtoText.Visible = true;
-            NodeForm.Visible = false;
             ISOTable.Visible = false;
-            ISOBrowser.Visible = false;
         }
-
-        private void NodeViewer_Click(object sender, EventArgs e)
-        {
-            WebtoText.Visible = false;
-            NodeForm.Visible = true;
-            ISOTable.Visible = false;
-            ISOBrowser.Visible = false;
-        }
-
+               
         private void Tableviewer_Click(object sender, EventArgs e)
         {
             WebtoText.Visible = false;
-            NodeForm.Visible = false;
             ISOTable.Visible = true;
-            ISOBrowser.Visible = false;
-        }
-
-        private void WebView_Click(object sender, EventArgs e)
-        {
-            WebtoText.Visible = false;
-            NodeForm.Visible = false;
-            ISOTable.Visible = false;
-            ISOBrowser.Visible = true;
         }
 
         private void LoadasTree_Click(object sender, EventArgs e)
         {
-
-            // WebtoText.Text = Heerkensfile.LoadFiletoBox("ISO9999withICFreferences.txt");            
             ISOTable.DataSource = Heerkensfile.FillMappingTable();
-
-            //WebtoText.Text = Heerkensfile.Kategoriezeile("15.12 Assistive products for house-cleaning").ToArray()[1];
-            //WebtoText.Text = Heerkensfile.CheckLineType("Equipment for assisting a person to breathe ").ToString();
-
-            //string[] LineCollection = Heerkensfile.Get_Cleared_LineCollection(Heerkensfile.KapitelTeilung()[10]);
-
-
-            //for (int i = 0; i <= LineCollection.Length - 2; i++)
-            //{
-            //    string[] Entry = Heerkensfile.IsoMappingEntry(LineCollection, i);
-            //    int EntrySize = Entry.Length;
-            //    WebtoText.Text = WebtoText.Text + "\r\n" + string.Join(",", Entry) + " ZeilenZahl: " + Entry.Length.ToString()+"\r\n";
-
-            //    i = i + EntrySize-1;
-            //}
-
+            
         }
         
     }
