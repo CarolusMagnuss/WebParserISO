@@ -14,7 +14,7 @@ using System.Xml;
 
 namespace WebParserISO
 {
-    class Heerkensfile
+    class  Heerkensfile
     {
         public static string[] Oberkategorien = {    "04 ASSISTIVE PRODUCTS FOR PERSONAL MEDICAL TREATMENT",
                                                 "05 ASSISTIVE PRODUCTS FOR TRAINING IN SKILLS",

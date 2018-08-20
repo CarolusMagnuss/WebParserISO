@@ -30,7 +30,6 @@
         {
             this.WebtoText = new System.Windows.Forms.RichTextBox();
             this.ISOTable = new System.Windows.Forms.DataGridView();
-            this.URLadress = new System.Windows.Forms.TextBox();
             this.WebToString = new System.Windows.Forms.Button();
             this.LoadasTree = new System.Windows.Forms.Button();
             this.ConvertToTable = new System.Windows.Forms.Button();
@@ -55,13 +54,6 @@
             this.ISOTable.Size = new System.Drawing.Size(1131, 431);
             this.ISOTable.TabIndex = 2;
             this.ISOTable.Visible = false;
-            // 
-            // URLadress
-            // 
-            this.URLadress.Location = new System.Drawing.Point(26, 517);
-            this.URLadress.Name = "URLadress";
-            this.URLadress.Size = new System.Drawing.Size(247, 20);
-            this.URLadress.TabIndex = 3;
             // 
             // WebToString
             // 
@@ -123,14 +115,12 @@
             this.Controls.Add(this.ConvertToTable);
             this.Controls.Add(this.LoadasTree);
             this.Controls.Add(this.WebToString);
-            this.Controls.Add(this.URLadress);
             this.Controls.Add(this.WebtoText);
             this.Controls.Add(this.ISOTable);
             this.Name = "Form1";
             this.Text = "Parse ISO9999 from WebPage";
             ((System.ComponentModel.ISupportInitialize)(this.ISOTable)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -138,7 +128,6 @@
 
         private System.Windows.Forms.RichTextBox WebtoText;
         private System.Windows.Forms.DataGridView ISOTable;
-        private System.Windows.Forms.TextBox URLadress;
         private System.Windows.Forms.Button WebToString;
         private System.Windows.Forms.Button LoadasTree;
         private System.Windows.Forms.Button ConvertToTable;
