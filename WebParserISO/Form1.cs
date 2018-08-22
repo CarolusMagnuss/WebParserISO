@@ -73,18 +73,5 @@ namespace WebParserISO
             // Write dataset to xml file or stream
             dataSet.WriteXml("StandardWay.xml");
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DataRowCollection Test;
-
-            foreach(DataRow row in Iso9999.Rows)
-            {
-                Test= XMLSpeichern.CorrespondingRows(row, MappingTable);
-                WebtoText.Text = WebtoText.Text + row[0].ToString()+ " : " + Test.Count.ToString()+"\r\n";
-                
-            }
-        }
-        
     }
 }

@@ -37,7 +37,6 @@
             this.Tableviewer = new System.Windows.Forms.Button();
             this.LoadIsofromFile = new System.Windows.Forms.Button();
             this.Save_as_DataSet = new System.Windows.Forms.Button();
-            this.Test = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ISOTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +47,7 @@
             this.WebtoText.Size = new System.Drawing.Size(1131, 436);
             this.WebtoText.TabIndex = 0;
             this.WebtoText.Text = "";
+            this.WebtoText.Visible = false;
             // 
             // ISOTable
             // 
@@ -56,35 +56,34 @@
             this.ISOTable.Name = "ISOTable";
             this.ISOTable.Size = new System.Drawing.Size(1131, 431);
             this.ISOTable.TabIndex = 2;
-            this.ISOTable.Visible = false;
             // 
             // WebToString
             // 
-            this.WebToString.Location = new System.Drawing.Point(548, 543);
+            this.WebToString.Location = new System.Drawing.Point(26, 532);
             this.WebToString.Name = "WebToString";
             this.WebToString.Size = new System.Drawing.Size(199, 25);
             this.WebToString.TabIndex = 4;
-            this.WebToString.Text = "Lade ISO in Tabelle";
+            this.WebToString.Text = "Parse ISO9999 von Website";
             this.WebToString.UseVisualStyleBackColor = true;
             this.WebToString.Click += new System.EventHandler(this.WebToString_Click);
             // 
             // LoadasTree
             // 
-            this.LoadasTree.Location = new System.Drawing.Point(753, 543);
+            this.LoadasTree.Location = new System.Drawing.Point(231, 532);
             this.LoadasTree.Name = "LoadasTree";
             this.LoadasTree.Size = new System.Drawing.Size(199, 25);
             this.LoadasTree.TabIndex = 5;
-            this.LoadasTree.Text = "Lade XML";
+            this.LoadasTree.Text = "Konvertiere Heerkensfile zu Tabelle";
             this.LoadasTree.UseVisualStyleBackColor = true;
             this.LoadasTree.Click += new System.EventHandler(this.LoadasTree_Click);
             // 
             // ConvertToTable
             // 
-            this.ConvertToTable.Location = new System.Drawing.Point(958, 543);
+            this.ConvertToTable.Location = new System.Drawing.Point(436, 532);
             this.ConvertToTable.Name = "ConvertToTable";
             this.ConvertToTable.Size = new System.Drawing.Size(199, 25);
             this.ConvertToTable.TabIndex = 6;
-            this.ConvertToTable.Text = "Speicher ISO in XML";
+            this.ConvertToTable.Text = "Speicher ISO-ICF Mapping in XML";
             this.ConvertToTable.UseVisualStyleBackColor = true;
             this.ConvertToTable.Click += new System.EventHandler(this.ConvertToTable_Click);
             // 
@@ -110,7 +109,7 @@
             // 
             // LoadIsofromFile
             // 
-            this.LoadIsofromFile.Location = new System.Drawing.Point(23, 530);
+            this.LoadIsofromFile.Location = new System.Drawing.Point(1057, 520);
             this.LoadIsofromFile.Name = "LoadIsofromFile";
             this.LoadIsofromFile.Size = new System.Drawing.Size(100, 37);
             this.LoadIsofromFile.TabIndex = 10;
@@ -120,30 +119,19 @@
             // 
             // Save_as_DataSet
             // 
-            this.Save_as_DataSet.Location = new System.Drawing.Point(147, 530);
+            this.Save_as_DataSet.Location = new System.Drawing.Point(950, 522);
             this.Save_as_DataSet.Name = "Save_as_DataSet";
             this.Save_as_DataSet.Size = new System.Drawing.Size(101, 35);
             this.Save_as_DataSet.TabIndex = 11;
-            this.Save_as_DataSet.Text = "Speichere Tabelle (default)";
+            this.Save_as_DataSet.Text = "Speichere Isotabelle (default)";
             this.Save_as_DataSet.UseVisualStyleBackColor = true;
             this.Save_as_DataSet.Click += new System.EventHandler(this.Save_as_DataSet_Click);
-            // 
-            // Test
-            // 
-            this.Test.Location = new System.Drawing.Point(285, 531);
-            this.Test.Name = "Test";
-            this.Test.Size = new System.Drawing.Size(84, 35);
-            this.Test.TabIndex = 12;
-            this.Test.Text = "test";
-            this.Test.UseVisualStyleBackColor = true;
-            this.Test.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 569);
-            this.Controls.Add(this.Test);
             this.Controls.Add(this.Save_as_DataSet);
             this.Controls.Add(this.LoadIsofromFile);
             this.Controls.Add(this.Tableviewer);
@@ -151,8 +139,8 @@
             this.Controls.Add(this.ConvertToTable);
             this.Controls.Add(this.LoadasTree);
             this.Controls.Add(this.WebToString);
-            this.Controls.Add(this.WebtoText);
             this.Controls.Add(this.ISOTable);
+            this.Controls.Add(this.WebtoText);
             this.Name = "Form1";
             this.Text = "Parse ISO9999 from WebPage";
             ((System.ComponentModel.ISupportInitialize)(this.ISOTable)).EndInit();
@@ -171,7 +159,6 @@
         private System.Windows.Forms.Button Tableviewer;
         private System.Windows.Forms.Button LoadIsofromFile;
         private System.Windows.Forms.Button Save_as_DataSet;
-        private System.Windows.Forms.Button Test;
     }
 }
 
