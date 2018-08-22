@@ -83,8 +83,20 @@ namespace WebParserISO
         private static void Split_String_To_Entry(string WebTableEntry)
         {
             DataRow row = Iso9999.NewRow();
+            string Titeleintrag= getBetween(WebTableEntry, "title=\"", "\">");
+            if (Titeleintrag.Length>=9 && Titeleintrag.Substring(0,8)=="Produkte")
+            {
+                int TitelStart = WebTableEntry.IndexOf('>');
+                int TitelEnde = WebTableEntry.IndexOf("</a>")-1;
+                char[] CharsToTrim = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ' ' };
+                Titeleintrag = WebTableEntry.Substring(TitelStart + 1, WebTableEntry.Length - TitelStart - 2);
+                TitelEnde = Titeleintrag.IndexOf('<') - 1;
+                Titeleintrag = Titeleintrag.Substring(0, TitelEnde);
+                Titeleintrag = Titeleintrag.Trim(CharsToTrim);
+            }
 
-            row[" Titel "] = getBetween(WebTableEntry, "title=\"", "\">"); ;
+            row[" Titel "] = Titeleintrag  ;
+            
             row[" Link "] = Remove_Ampersands(getBetween(WebTableEntry, "href=\"", "\" title"));
 
             string IsoNummer = getBetween(WebTableEntry, "Iso=", "\" title");

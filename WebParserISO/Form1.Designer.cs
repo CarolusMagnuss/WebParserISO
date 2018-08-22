@@ -35,6 +35,9 @@
             this.ConvertToTable = new System.Windows.Forms.Button();
             this.Textviewer = new System.Windows.Forms.Button();
             this.Tableviewer = new System.Windows.Forms.Button();
+            this.LoadIsofromFile = new System.Windows.Forms.Button();
+            this.Save_as_DataSet = new System.Windows.Forms.Button();
+            this.Test = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ISOTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             // 
             // WebToString
             // 
-            this.WebToString.Location = new System.Drawing.Point(146, 543);
+            this.WebToString.Location = new System.Drawing.Point(548, 543);
             this.WebToString.Name = "WebToString";
             this.WebToString.Size = new System.Drawing.Size(199, 25);
             this.WebToString.TabIndex = 4;
@@ -67,7 +70,7 @@
             // 
             // LoadasTree
             // 
-            this.LoadasTree.Location = new System.Drawing.Point(535, 543);
+            this.LoadasTree.Location = new System.Drawing.Point(753, 543);
             this.LoadasTree.Name = "LoadasTree";
             this.LoadasTree.Size = new System.Drawing.Size(199, 25);
             this.LoadasTree.TabIndex = 5;
@@ -77,7 +80,7 @@
             // 
             // ConvertToTable
             // 
-            this.ConvertToTable.Location = new System.Drawing.Point(901, 543);
+            this.ConvertToTable.Location = new System.Drawing.Point(958, 543);
             this.ConvertToTable.Name = "ConvertToTable";
             this.ConvertToTable.Size = new System.Drawing.Size(199, 25);
             this.ConvertToTable.TabIndex = 6;
@@ -105,11 +108,44 @@
             this.Tableviewer.UseVisualStyleBackColor = true;
             this.Tableviewer.Click += new System.EventHandler(this.Tableviewer_Click);
             // 
+            // LoadIsofromFile
+            // 
+            this.LoadIsofromFile.Location = new System.Drawing.Point(23, 530);
+            this.LoadIsofromFile.Name = "LoadIsofromFile";
+            this.LoadIsofromFile.Size = new System.Drawing.Size(100, 37);
+            this.LoadIsofromFile.TabIndex = 10;
+            this.LoadIsofromFile.Text = "Lade Iso aus Datei (default)";
+            this.LoadIsofromFile.UseVisualStyleBackColor = true;
+            this.LoadIsofromFile.Click += new System.EventHandler(this.LoadIsofromFile_Click);
+            // 
+            // Save_as_DataSet
+            // 
+            this.Save_as_DataSet.Location = new System.Drawing.Point(147, 530);
+            this.Save_as_DataSet.Name = "Save_as_DataSet";
+            this.Save_as_DataSet.Size = new System.Drawing.Size(101, 35);
+            this.Save_as_DataSet.TabIndex = 11;
+            this.Save_as_DataSet.Text = "Speichere Tabelle (default)";
+            this.Save_as_DataSet.UseVisualStyleBackColor = true;
+            this.Save_as_DataSet.Click += new System.EventHandler(this.Save_as_DataSet_Click);
+            // 
+            // Test
+            // 
+            this.Test.Location = new System.Drawing.Point(285, 531);
+            this.Test.Name = "Test";
+            this.Test.Size = new System.Drawing.Size(84, 35);
+            this.Test.TabIndex = 12;
+            this.Test.Text = "test";
+            this.Test.UseVisualStyleBackColor = true;
+            this.Test.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1192, 569);
+            this.Controls.Add(this.Test);
+            this.Controls.Add(this.Save_as_DataSet);
+            this.Controls.Add(this.LoadIsofromFile);
             this.Controls.Add(this.Tableviewer);
             this.Controls.Add(this.Textviewer);
             this.Controls.Add(this.ConvertToTable);
@@ -133,6 +169,9 @@
         private System.Windows.Forms.Button ConvertToTable;
         private System.Windows.Forms.Button Textviewer;
         private System.Windows.Forms.Button Tableviewer;
+        private System.Windows.Forms.Button LoadIsofromFile;
+        private System.Windows.Forms.Button Save_as_DataSet;
+        private System.Windows.Forms.Button Test;
     }
 }
 

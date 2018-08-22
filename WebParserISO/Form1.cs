@@ -52,8 +52,38 @@ namespace WebParserISO
 
         private void LoadasTree_Click(object sender, EventArgs e)
         {
-            ISOTable.DataSource = Heerkensfile.FillMappingTable();
+            MappingTable= Heerkensfile.FillMappingTable();
+            ISOTable.DataSource = MappingTable;
             
+        }
+
+        private void LoadIsofromFile_Click(object sender, EventArgs e)
+        {
+            var DataSet = new DataSet();
+            DataSet.ReadXml(Application.StartupPath + "/StandardWay.xml");
+            Iso9999 = DataSet.Tables[0];
+            ISOTable.DataSource = Iso9999;
+        }
+
+        private void Save_as_DataSet_Click(object sender, EventArgs e)
+        {
+            var dataSet = new DataSet();
+            dataSet.Tables.Add(Iso9999);
+
+            // Write dataset to xml file or stream
+            dataSet.WriteXml("StandardWay.xml");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataRowCollection Test;
+
+            foreach(DataRow row in Iso9999.Rows)
+            {
+                Test= XMLSpeichern.CorrespondingRows(row, MappingTable);
+                WebtoText.Text = WebtoText.Text + row[0].ToString()+ " : " + Test.Count.ToString()+"\r\n";
+                
+            }
         }
         
     }
